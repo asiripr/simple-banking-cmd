@@ -1,11 +1,23 @@
 def showBalance():
     print(f"Your Balance is ${balance:.2f}")
 def withdraw():
-    pass
+    amount = float(input("Enter an amount to withdraw from your account: "))
+    if amount>balance:
+        print("Insufficient balance in your account")
+        return 0
+    elif amount<0:
+        print("This is not a valid amount.")
+        return 0
+    else:
+        return amount
+    
 def deposit():
     amount = float(input("Enter an amount to save in your account: "))
     if amount<0:
-        print("This is not a valid account.")
+        print("This is not a valid amount.")
+        return 0
+    else:
+        return amount
 
 balance = 0
 isRunning = True
@@ -22,9 +34,9 @@ while isRunning:
     if choice == '1':
         showBalance()
     elif choice == '2':
-        withdraw()
+        balance-=withdraw()
     elif choice == '3':
-        deposit()
+        balance+=deposit()
     elif choice == '4':
         isRunning = False
     else:
